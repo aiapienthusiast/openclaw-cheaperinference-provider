@@ -1,0 +1,9 @@
+export const PROVIDER_ID = "cheaperinference";
+export const PROVIDER_LABEL = "Cheaper Inference";
+export const BASE_URL = "https://api.cheaperinference.com/v1";
+export const MODELS_URL = `${BASE_URL}/models`;
+export const API_KEY_ENV_VAR = "CHEAPER_INFERENCE_API_KEY";
+export const DEFAULT_MODEL_ID = "gpt-5.4-mini";
+export const DEFAULT_MODEL_REF = `${PROVIDER_ID}/${DEFAULT_MODEL_ID}`;
+export const SIGNUP_URL = "https://cheaperinference.com/signup";
+export const DOCS_URL = "https://cheaperinference.com/docs";
