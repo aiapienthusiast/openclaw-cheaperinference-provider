@@ -1,0 +1,113 @@
+{
+  "id": "cheaperinference",
+  "name": "Cheaper Inference",
+  "description": "Cheaper Inference model provider (OpenAI-compatible API)",
+  "categories": ["models"],
+  "activation": {
+    "onStartup": false
+  },
+  "providers": ["cheaperinference"],
+  "setup": {
+    "providers": [
+      {
+        "id": "cheaperinference",
+        "authMethods": ["api-key"],
+        "envVars": ["CHEAPER_INFERENCE_API_KEY"]
+      }
+    ]
+  },
+  "providerAuthChoices": [
+    {
+      "provider": "cheaperinference",
+      "method": "api-key",
+      "choiceId": "cheaperinference-api-key",
+      "choiceLabel": "Cheaper Inference API key",
+      "choiceHint": "OpenAI-compatible API for many models",
+      "website": "https://cheaperinference.com",
+      "docsUrl": "https://cheaperinference.com/docs",
+      "groupId": "cheaperinference",
+      "groupLabel": "Cheaper Inference",
+      "groupHint": "OpenAI-compatible API for many models",
+      "optionKey": "cheaperinferenceApiKey",
+      "cliFlag": "--cheaperinference-api-key",
+      "cliOption": "--cheaperinference-api-key <key>",
+      "cliDescription": "Cheaper Inference API key"
+    }
+  ],
+  "modelCatalog": {
+    "providers": {
+      "cheaperinference": {
+        "baseUrl": "https://api.cheaperinference.com/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "gpt-5.4-mini",
+            "name": "GPT-5.4 mini",
+            "input": ["text", "image"],
+            "reasoning": true,
+            "contextWindow": 400000,
+            "maxTokens": 32768,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "maxTokensField": "max_tokens",
+              "supportsStore": false,
+              "supportsReasoningEffort": true
+            },
+            "tags": ["default"]
+          },
+          {
+            "id": "gpt-5.4",
+            "name": "GPT-5.4",
+            "input": ["text", "image"],
+            "reasoning": true,
+            "contextWindow": 1000000,
+            "maxTokens": 32768,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "maxTokensField": "max_tokens",
+              "supportsStore": false,
+              "supportsReasoningEffort": true
+            }
+          },
+          {
+            "id": "claude-sonnet-5",
+            "name": "Claude Sonnet 5",
+            "input": ["text"],
+            "reasoning": false,
+            "contextWindow": 1000000,
+            "maxTokens": 64000,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "maxTokensField": "max_tokens",
+              "supportsStore": false,
+              "supportsReasoningEffort": false,
+              "cacheControlFormat": "anthropic"
+            }
+          },
+          {
+            "id": "gemini-3.1-pro",
+            "name": "Gemini 3.1 Pro",
+            "input": ["text"],
+            "reasoning": false,
+            "contextWindow": 1048576,
+            "maxTokens": 32768,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "maxTokensField": "max_tokens",
+              "supportsStore": false,
+              "supportsReasoningEffort": false
+            }
+          }
+        ]
+      }
+    },
+    "discovery": {
+      "cheaperinference": "refreshable"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

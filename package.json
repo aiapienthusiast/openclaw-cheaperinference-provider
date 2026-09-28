@@ -1,0 +1,79 @@
+{
+  "name": "openclaw-cheaperinference-provider",
+  "version": "0.1.0",
+  "description": "OpenClaw provider plugin for Cheaper Inference, an OpenAI-compatible LLM API.",
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "openclaw-provider",
+    "cheaperinference",
+    "llm"
+  ],
+  "homepage": "https://cheaperinference.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aiapienthusiast/openclaw-cheaperinference-provider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiapienthusiast/openclaw-cheaperinference-provider/issues"
+  },
+  "license": "MIT",
+  "author": "aiapienthusiast",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./openclaw.plugin.json": "./openclaw.plugin.json"
+  },
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=24.16.0 <25 || >=26.1.0"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit --noUnusedLocals --noUnusedParameters",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run test && npm run build",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.9.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.2",
+    "openclaw": "2026.9.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.9"
+  },
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ],
+    "providers": [
+      "cheaperinference"
+    ],
+    "install": {
+      "clawhubSpec": "clawhub:openclaw-cheaperinference-provider",
+      "defaultChoice": "clawhub",
+      "minHostVersion": ">=2026.9.6"
+    },
+    "compat": {
+      "pluginApi": ">=2026.9.6",
+      "minGatewayVersion": "2026.9.6"
+    },
+    "build": {
+      "openclawVersion": "2026.9.6",
+      "pluginSdkVersion": "2026.9.6"
+    }
+  }
+}
